@@ -10,10 +10,10 @@ namespace Test_Repository
     {
         public class Test
         {
-            string testURL = "http://the-internet.herokuapp.com/windows";
+            string testURL = "https://www.seleniumeasy.com/test/window-popup-modal-demo.html";
 
             [Fact]
-            public void TestNewWindow()
+            public void TestPopupWindow()
             {
 
                 ChromeOptions chrome = new ChromeOptions();
@@ -23,11 +23,13 @@ namespace Test_Repository
                 IWebDriver driver = new ChromeDriver(chrome);
                 driver.Url = testURL;
 
-                IWebElement linkToNewWindow = driver.FindElement(By.XPath("//a[text()='Click Here']"));
+                IWebElement linkToNewWindow = driver.FindElement(By.XPath("//a[text()='  Follow On Twitter ']"));
                 linkToNewWindow.Click();
 
+                driver.SwitchTo().Window(driver.WindowHandles[1]);
+
                 IWebElement newWindowText = new WebDriverWait(driver, TimeSpan.FromSeconds(30))
-                        .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//h3")));
+                        .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[text()='Log in']")));
                 if (newWindowText.Text.Equals("New Window"))
                 {
                     Console.WriteLine("Passed");
