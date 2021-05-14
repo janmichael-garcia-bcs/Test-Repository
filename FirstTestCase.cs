@@ -17,7 +17,7 @@ namespace Test_Repository
             {
 
                 ChromeOptions chrome = new ChromeOptions();
-                //chrome.AddArguments("headless");
+                chrome.AddArguments("headless");
                 chrome.AddArguments("--window-size=1920,1080");
 
                 IWebDriver driver = new ChromeDriver(chrome);
