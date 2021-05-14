@@ -30,7 +30,7 @@ namespace Test_Repository
 
                 IWebElement newWindowText = new WebDriverWait(driver, TimeSpan.FromSeconds(30))
                         .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[text()='Log in']")));
-                if (newWindowText.Text.Equals("New Window"))
+                if (newWindowText.Text.Equals("Log in"))
                 {
                     Console.WriteLine("Passed");
                 }
